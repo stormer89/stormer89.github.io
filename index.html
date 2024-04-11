@@ -68,9 +68,14 @@
 </style>
 </head>
 <body>
+<audio autoplay loop>
+  <source src="https://www.youtube.com/embed/OM94GPdKDY0?autoplay=1&loop=1" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 <div id="text">LOLZINHO HOJE?</div>
 <div id="button-container">
-    <button id="button-green" class="button">OLD</button>
+    <button id="button-green" class="button" onclick="showPopup()">SIM</button>
     <button id="button-red" class="button">NÃO</button>
 </div>
 
@@ -86,12 +91,10 @@
         document.getElementById("button-container").style.display = "none";
         document.getElementById("mobile-warning").style.display = "block";
     }
-</script>
 
-<script>
+    // Adiciona evento de mousemove para o botão "NÃO"
     const redButton = document.getElementById("button-red");
-
-    redButton.addEventListener("mouseover", () => {
+    redButton.addEventListener("mousemove", () => {
         const buttonWidth = redButton.offsetWidth;
         const buttonHeight = redButton.offsetHeight;
         const safeDistance = 200; // Distância segura do mouse
@@ -123,6 +126,11 @@
         redButton.style.left = `${newX}px`;
         redButton.style.top = `${newY}px`;
     });
+
+    function showPopup() {
+        alert("=P");
+    }
 </script>
+
 </body>
 </html>
