@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brilho do LOLZINHO</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        color: white;
+        overflow: hidden; /* Para evitar que o botão saia da tela */
+    }
+
+    #text {
+        font-size: 64px; /* Tamanho do texto aumentado */
+        font-weight: bold; /* Negrito */
+        text-align: center;
+        animation: changeColor 2s infinite alternate;
+    }
+
+    #button-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .button {
+        padding: 20px 40px; /* Tamanho dos botões aumentado */
+        font-size: 24px; /* Tamanho da fonte dos botões aumentado */
+        cursor: pointer;
+        border: none;
+        border-radius: 10px; /* Borda dos botões arredondada */
+        margin: 0 20px; /* Margem entre os botões aumentada */
+    }
+
+    #button-green {
+        background-color: green;
+        color: white;
+    }
+
+    #button-red {
+        background-color: red;
+        color: white;
+    }
+    
+    @keyframes changeColor {
+        0% {
+            color: yellow;
+        }
+        50% {
+            color: blue;
+        }
+        100% {
+            color: green;
+        }
+    }
+</style>
+</head>
+<body>
+<div id="text">LOLZINHO HOJE?</div>
+<div id="button-container">
+    <button id="button-green" class="button">OLD</button>
+    <button id="button-red" class="button">NÃO</button>
+</div>
+
+<script>
+    const redButton = document.getElementById("button-red");
+
+    redButton.addEventListener("mouseover", () => {
+        const buttonWidth = redButton.offsetWidth;
+        const buttonHeight = redButton.offsetHeight;
+        const safeDistance = 200; // Distância segura do mouse
+        
+        // Calcula a nova posição do botão para garantir uma distância segura do mouse e preferencialmente aleatória
+        let newX = Math.floor(Math.random() * (window.innerWidth - buttonWidth));
+        let newY = Math.floor(Math.random() * (window.innerHeight - buttonHeight));
+
+        // Verifica se a nova posição do botão está próxima o suficiente do mouse
+        const mouseX = window.event.clientX;
+        const mouseY = window.event.clientY;
+        const distanceX = Math.abs(newX - mouseX);
+        const distanceY = Math.abs(newY - mouseY);
+        if (distanceX < safeDistance && distanceY < safeDistance) {
+            // Se a nova posição estiver muito próxima do mouse, move o botão para uma posição aleatória distante
+            if (newX < window.innerWidth / 2) {
+                newX += safeDistance;
+            } else {
+                newX -= safeDistance;
+            }
+            if (newY < window.innerHeight / 2) {
+                newY += safeDistance;
+            } else {
+                newY -= safeDistance;
+            }
+        }
+        
+        redButton.style.position = "absolute"; // Define a posição como absoluta
+        redButton.style.left = `${newX}px`;
+        redButton.style.top = `${newY}px`;
+    });
+</script>
+</body>
+</html>
