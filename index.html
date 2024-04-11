@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brilho do LOLZINHO</title>
+<title>BORA?</title>
 <style>
     body {
         margin: 0;
@@ -48,6 +48,11 @@
         background-color: red;
         color: white;
     }
+
+    #mobile-warning {
+        font-size: 36px;
+        color: red;
+    }
     
     @keyframes changeColor {
         0% {
@@ -68,6 +73,20 @@
     <button id="button-green" class="button">OLD</button>
     <button id="button-red" class="button">NÃO</button>
 </div>
+
+<div id="mobile-warning">ABRIR SOMENTE NO PC!</div>
+
+<script>
+    // Verifica se o dispositivo é móvel
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Se for móvel, mostra o aviso e esconde o resto do conteúdo
+    if (isMobile) {
+        document.getElementById("text").style.display = "none";
+        document.getElementById("button-container").style.display = "none";
+        document.getElementById("mobile-warning").style.display = "block";
+    }
+</script>
 
 <script>
     const redButton = document.getElementById("button-red");
